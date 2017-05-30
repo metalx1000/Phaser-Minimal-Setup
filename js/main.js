@@ -1,7 +1,17 @@
 var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'phaser', { preload: preload, create: create, update: update });
 
 function preload() {
-  loadimgs();
+  preload_imgs.forEach(function(i){
+    var b = baseName(i);
+    console.log(b);
+    game.load.image(b,i);
+  });
+
+  preload_snds.forEach(function(i){
+    var b = baseName(i);
+    var ogg = "res/snds/"+b+".ogg";
+    game.load.audio(b,[i,ogg]);
+  });
 }
 
 function create() {
@@ -27,47 +37,6 @@ function playerUpdate(){
 }
 
 function createPlatform(){
-}
-
-var loaded_imgs = [];
-var loaded_snds = [];
-
-function loadimgs(){
-  var url = 'res/loadimgs.php';
-  $.post( url, function( data ) {
-    var data = data.split("\n");
-    data.forEach(function(i){
-      if(i != ""){
-        var b = baseName(i);
-        loaded_imgs.push(b);
-        game.load.image(b, i);
-  game.load.start();
-      }
-    });
-  });
-}
-
-function loadsnds(){
-  var url = 'res/loadsnds.php';
-  $.post( url, function( data ) {
-    var data = data.split("\n");
-    data.forEach(function(i){
-      if(i != ""){
-        var b = baseName(i);
-        loaded_snds.push(b);
-        var ogg = "res/snds/"+b+".ogg";
-        game.load.audio(b, [i, ogg]);
-      }
-    });
-  });
-}
-
-function loaded_res(){
-  console.log("[Loaded Images]");
-  console.log(loaded_imgs);
-  console.log("[Loaded Sounds]");
-  console.log();
-  console.log(loaded_snds);
 }
 
 function baseName(str){
