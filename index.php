@@ -24,6 +24,7 @@
       var preload_imgs = <?php include("loadimgs.php");?>;
       var preload_snds = <?php include("loadsnds.php");?>;
     </script>
+    <script src="js/extras.js"></script>
     <script src="js/main.js"></script>
   </head>
   <body>
