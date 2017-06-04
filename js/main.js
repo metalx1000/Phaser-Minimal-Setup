@@ -1,5 +1,7 @@
 var game = new Phaser.Game(1080, 720, Phaser.AUTO, 'phaser', { preload: preload, create: create, update: update });
 
+var tux;
+
 function preload() {
   //load imgs
   preload_imgs.forEach(function(i){
@@ -17,11 +19,15 @@ function preload() {
 
 function create() {
   snd = game.add.audio('1');
-  var tux = game.add.sprite(200, 200, "tux");
-  tux.anchor.setTo(0.5, 0.5);
-  tux.inputEnabled = true;
-  tux.events.onInputDown.add( function(){snd.play();}, this); 
+  createTux();
 }
 
 function update() {
+}
+
+function createTux(){
+  tux = game.add.sprite(200, 200, "tux");
+  tux.anchor.setTo(0.5, 0.5);
+  tux.inputEnabled = true;
+  tux.events.onInputDown.add( function(){snd.play();}, this); 
 }
