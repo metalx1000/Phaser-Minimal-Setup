@@ -18,6 +18,8 @@ function preload() {
 }
 
 function create() {
+  //start physics system
+  //game.physics.startSystem(Phaser.Physics.ARCADE);
   game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
   createTux();
 }
