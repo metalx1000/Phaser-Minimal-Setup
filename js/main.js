@@ -18,7 +18,7 @@ function preload() {
 }
 
 function create() {
-  snd = game.add.audio('1');
+  game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
   createTux();
 }
 
@@ -26,8 +26,12 @@ function update() {
 }
 
 function createTux(){
+  snd = game.add.audio('1');
   tux = game.add.sprite(200, 200, "tux");
   tux.anchor.setTo(0.5, 0.5);
   tux.inputEnabled = true;
-  tux.events.onInputDown.add( function(){snd.play();}, this); 
+  tux.events.onInputDown.add( function(){
+    snd.play();
+    game.add.tween( tux ).to( { alpha: [.1,1] }, 1000, "Linear", true);
+  }, this);
 }
