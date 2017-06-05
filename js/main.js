@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'phaser', { preload: preload, create: create, update: update });
 
-var tux;
+var player;
 
 function preload() {
   //load imgs
@@ -21,19 +21,21 @@ function create() {
   //start physics system
   //game.physics.startSystem(Phaser.Physics.ARCADE);
   game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
-  createTux();
+  player = createObj("tux");
 }
 
 function update() {
 }
 
-function createTux(){
+function createObj(s){
   snd = game.add.audio('1');
-  tux = game.add.sprite(200, 200, "tux");
-  tux.anchor.setTo(0.5, 0.5);
-  tux.inputEnabled = true;
-  tux.events.onInputDown.add( function(){
+  var o = game.add.sprite(200, 200, s);
+  o.anchor.setTo(0.5, 0.5);
+  o.inputEnabled = true;
+  o.events.onInputDown.add( function(){
     snd.play();
-    game.add.tween( tux ).to( { alpha: [.1,1] }, 1000, "Linear", true);
+    game.add.tween( o ).to( { alpha: [.1,1] }, 1000, "Linear", true);
   }, this);
+
+  return o;
 }
