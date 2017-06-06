@@ -21,21 +21,8 @@ function create() {
   //start physics system
   //game.physics.startSystem(Phaser.Physics.ARCADE);
   game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
-  player = createObj("tux");
 }
 
 function update() {
 }
 
-function createObj(s){
-  snd = game.add.audio('1');
-  var o = game.add.sprite(200, 200, s);
-  o.anchor.setTo(0.5, 0.5);
-  o.inputEnabled = true;
-  o.events.onInputDown.add( function(){
-    snd.play();
-    game.add.tween( o ).to( { alpha: [.1,1] }, 1000, "Linear", true);
-  }, this);
-
-  return o;
-}
