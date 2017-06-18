@@ -37,3 +37,11 @@ function followMouse(d) {
 
 }
 
+function clickObj(d){
+  if(typeof d.func === "undefined"){d.func = function(){console.log("Clicked")}}
+
+  d.sprite.inputEnabled = true;
+  d.sprite.events.onInputDown.add( d.func, this);
+}
+
+
