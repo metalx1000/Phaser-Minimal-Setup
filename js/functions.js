@@ -44,4 +44,27 @@ function clickObj(d){
   d.sprite.events.onInputDown.add( d.func, d.sprite);
 }
 
+function paint(d){
+  if(typeof d === "undefined"){d = {}}
+  if(typeof d.color === "undefined"){d.color = 0xff0000}
+
+  if(typeof d.size === "undefined"){d.size = 10}
+  if(typeof d.style === "undefined"){d.style = 1}
+
+  var graphics = game.add.graphics(0, 0);
+
+  //if color is random
+  if(d.color == "random"){
+    d.color = Phaser.Color.getRandomColor(50, 255, 255);
+  }
+
+  //set style
+  if(d.style == 1){
+    graphics.lineStyle(2, d.color, 1);
+  }else{
+    graphics.beginFill(d.color, 1);
+  }
+  graphics.drawCircle(game.input.x, game.input.y, d.size);
+
+}
 
