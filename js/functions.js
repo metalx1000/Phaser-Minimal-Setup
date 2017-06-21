@@ -23,7 +23,11 @@ function gravity(d){
 }
 
 function followMouse(d) {
-  if(typeof d.vel === "undefined"){d.vel = 400;}
+  if(typeof d.vel === "undefined"){
+    d.vel = 400;
+  }else{
+    d.vel = d.vel*100;
+  }
   //If you've set physics for this obj already you can comment the next line out
   game.physics.enable(d.sprite, Phaser.Physics.ARCADE);
 
@@ -67,4 +71,15 @@ function paint(d){
   graphics.drawCircle(game.input.x, game.input.y, d.size);
 
 }
+
+function mouseDown(d){
+  //  only move when you click
+  if (game.input.activePointer.isDown){
+    d.onClick(d.sprite); 
+  }
+  else{
+    d.onRelease(d.sprite);
+  }
+}
+
 
