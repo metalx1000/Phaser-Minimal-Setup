@@ -15,6 +15,11 @@ function preload() {
     var ogg = "res/snds/"+b+".ogg";
     game.load.audio(b,[i,ogg]);
   });
+
+  //load tile maps
+  game.load.tilemap('map', 'res/maps/map0.json', null, Phaser.Tilemap.TILED_JSON);
+  game.load.image('tiles', 'res/tiles/tiles.png');
+
 }
 
 function create() {

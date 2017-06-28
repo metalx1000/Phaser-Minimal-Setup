@@ -82,4 +82,11 @@ function mouseDown(d){
   }
 }
 
+function loadMap(){
+  map = game.add.tilemap('map');
+  map.addTilesetImage('tiles');
+  layer = map.createLayer('layer1');
+  layer.resizeWorld();
+  map.setCollisionBetween(1, 12);
+}
 
