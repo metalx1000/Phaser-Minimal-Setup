@@ -6,4 +6,4 @@ Minimal setup for Phaser 2D HTML5 games
 
 # Other Useful tools
 My VIM configuration has a lot of shortcuts that work well with this project
-https://github.com/metalx1000/My-Vim-Setup(https://github.com/metalx1000/My-Vim-Setup)
+https://github.com/metalx1000/My-Vim-Setup
