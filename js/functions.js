@@ -91,6 +91,9 @@ function fscreen(){
 }
 
 function fsIcon(icon){
+  if(typeof icon === "undefined"){icon = {}};
+  if(typeof icon.x === "undefined"){icon.x = game.width - 50};
+  if(typeof icon.y === "undefined"){icon.y = 10 };
   var graphics = game.add.graphics(icon.x, icon.y);
   // draw a rectangle
   graphics.lineStyle(2, 0xFFFFFF, 1);

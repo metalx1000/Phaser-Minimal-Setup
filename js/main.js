@@ -1,6 +1,6 @@
 var game = new Phaser.Game(854, 480, Phaser.AUTO, 'phaser', { preload: preload, create: create, update: update });
 
-var player;
+var player, fullscreenIcon;
 
 function preload() {
   //load imgs
@@ -28,7 +28,7 @@ function create() {
   game.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
 
   //add fullscreen icon
-  var fullscreenIcon = fsIcon({x:game.width - 50,y:10});
+  fullscreenIcon = fsIcon({x:game.width - 50,y:10});
 
 }
 
