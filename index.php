@@ -29,10 +29,13 @@
   </head>
   <body>
     <div class="container">
+      <br>
+      <br>
+      <!-- Old button for fullscreen Mode
       <div class="btn-group btn-group-justified">
         <a id="fscreen" class="btn btn-primary" onclick="fscreen()">Fullscreen</a>
       </div>
+      -->
     </div>
-
   </body>
 </html>

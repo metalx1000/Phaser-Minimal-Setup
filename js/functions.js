@@ -5,11 +5,6 @@ function baseName(str){
   return base;
 }
 
-function fscreen(){
-  game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-  game.scale.startFullScreen();
-}
-
 function gravity(d){
   //collide with world
   if(typeof d.world === "undefined"){ d.world = true;}
@@ -90,3 +85,16 @@ function loadMap(){
   map.setCollisionBetween(1, 12);
 }
 
+function fscreen(){
+  game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+  game.scale.startFullScreen();
+}
+
+function fsIcon(icon){
+  var graphics = game.add.graphics(icon.x, icon.y);
+  // draw a rectangle
+  graphics.lineStyle(2, 0xFFFFFF, 1);
+  var fsicon = graphics.drawRect(0, 0, 25, 25);
+  game.input.onDown.add(fscreen, fsicon);
+  return fsicon;
+}
