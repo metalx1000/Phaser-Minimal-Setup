@@ -85,19 +85,41 @@ function loadMap(){
   map.setCollisionBetween(1, 12);
 }
 
+//function fscreen(){
+//  game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+//  game.scale.startFullScreen();
+//}
+
+var fs_btn;
 function fscreen(){
+  //Set the game to stretch and fill the screen
   game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-  game.scale.startFullScreen();
+  if (game.scale.isFullScreen){
+    game.scale.stopFullScreen();
+    fs_btn.frame = 0;
+  }else{
+    game.scale.startFullScreen();
+    fs_btn.frame = 1;
+  }
 }
 
 function fsIcon(icon){
   if(typeof icon === "undefined"){icon = {}};
   if(typeof icon.x === "undefined"){icon.x = game.width - 50};
   if(typeof icon.y === "undefined"){icon.y = 10 };
-  var graphics = game.add.graphics(icon.x, icon.y);
+  fs_btn = game.add.button(icon.x,icon.y, 'fullscreen', fscreen, this);
+//  var graphics = game.add.graphics(icon.x, icon.y);
   // draw a rectangle
-  graphics.lineStyle(2, 0xFFFFFF, 1);
-  var fsicon = graphics.drawRect(0, 0, 25, 25);
-  game.input.onDown.add(fscreen, fsicon);
-  return fsicon;
+//  graphics.lineStyle(2, 0xFFFFFF, 1);
+//  var fsicon = graphics.drawRect(0, 0, 25, 25);
+  //fsicon.events.onInputDown.add(fscreen, fsicon);
+//  game.input.onDown.add(fscreen, fsicon);
+  return fs_btn;
+}
+
+function preload_btn(){
+  var sprites = ['fullscreen'];
+  sprites.forEach(function(s){
+    game.load.spritesheet(s,"res/buttons/"+s+".png",32,32);
+  });
 }

@@ -16,6 +16,9 @@ function preload() {
     game.load.audio(b,[i,ogg]);
   });
 
+  //load buttons
+  preload_btn();
+
   //load tile maps
   game.load.tilemap('map', 'res/maps/map0.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.image('tiles', 'res/tiles/tiles.png');
