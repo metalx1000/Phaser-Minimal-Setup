@@ -3,21 +3,8 @@ var game = new Phaser.Game(854, 480, Phaser.AUTO, 'phaser', { preload: preload, 
 var player, fullscreenIcon;
 
 function preload() {
-  //load imgs
-  preload_imgs.forEach(function(i){
-    var b = baseName(i);
-    game.load.image(b,i);
-  });
-
-  //load sounds
-  preload_snds.forEach(function(i){
-    var b = baseName(i);
-    var ogg = "res/snds/"+b+".ogg";
-    game.load.audio(b,[i,ogg]);
-  });
-
-  //load buttons
-  preload_btn();
+  //load imgs and sounds
+  preloader();
 
   //load tile maps
   game.load.tilemap('map', 'res/maps/map0.json', null, Phaser.Tilemap.TILED_JSON);

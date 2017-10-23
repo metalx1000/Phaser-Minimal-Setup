@@ -108,16 +108,30 @@ function fsIcon(icon){
   if(typeof icon.x === "undefined"){icon.x = game.width - 50};
   if(typeof icon.y === "undefined"){icon.y = 10 };
   fs_btn = game.add.button(icon.x,icon.y, 'fullscreen', fscreen, this);
-//  var graphics = game.add.graphics(icon.x, icon.y);
+  //  var graphics = game.add.graphics(icon.x, icon.y);
   // draw a rectangle
-//  graphics.lineStyle(2, 0xFFFFFF, 1);
-//  var fsicon = graphics.drawRect(0, 0, 25, 25);
+  //  graphics.lineStyle(2, 0xFFFFFF, 1);
+  //  var fsicon = graphics.drawRect(0, 0, 25, 25);
   //fsicon.events.onInputDown.add(fscreen, fsicon);
-//  game.input.onDown.add(fscreen, fsicon);
+  //  game.input.onDown.add(fscreen, fsicon);
   return fs_btn;
 }
 
-function preload_btn(){
+
+function preloader(){
+  //load imgs
+  preload_imgs.forEach(function(i){
+    var b = baseName(i);
+    game.load.image(b,i);
+  });
+
+  //load sounds
+  preload_snds.forEach(function(i){
+    var b = baseName(i);
+    var ogg = "res/snds/"+b+".ogg";
+    game.load.audio(b,[i,ogg]);
+  });
+
   var sprites = ['fullscreen'];
   sprites.forEach(function(s){
     game.load.spritesheet(s,"res/buttons/"+s+".png",32,32);
